@@ -22,6 +22,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@3.27.121.14 << 'EOF'
             cd /var/www/html/uts-cloud-computing
-            git pull origin main
+            sudo git pull origin main
             sudo systemctl restart httpd
           EOF
