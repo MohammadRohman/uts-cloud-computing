@@ -1,4 +1,11 @@
 <?php
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+
 // Connect to RDS database
 $host = "produkdb-instance.ctcessy8wp74.ap-southeast-2.rds.amazonaws.com";
 $user = "admin";
@@ -37,7 +44,6 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
