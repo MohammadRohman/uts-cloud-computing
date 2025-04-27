@@ -3,8 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
-
 // Connect to RDS database
 $host = "produkdb-instance.ctcessy8wp74.ap-southeast-2.rds.amazonaws.com";
 $user = "admin";
