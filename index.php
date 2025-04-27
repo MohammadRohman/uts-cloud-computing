@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -18,21 +17,6 @@ if ($conn->connect_error) {
 // Query produk
 $sql = "SELECT * FROM produk";
 $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo "<h1>Produk Kami</h1>";
-    while($row = $result->fetch_assoc()) {
-        echo "<div>";
-        echo "<h2>" . $row['nama'] . "</h2>";
-        echo "<p>Harga: Rp" . number_format($row['harga'], 0, ',', '.') . "</p>";
-        echo "<img src='https://my-uts-bucket.s3.amazonaws.com/" . $row['gambar'] . "' width='200' />";
-        echo "</div><br>";
-    }
-} else {
-    echo "Tidak ada produk.";
-}
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -59,13 +43,15 @@ $conn->close();
                         <tr>
                             <th class="py-2 px-4 border-b text-left">Product Name</th>
                             <th class="py-2 px-4 border-b text-left">Price</th>
+                            <th class="py-2 px-4 border-b text-left">Image</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while($row = $result->fetch_assoc()): ?>
                             <tr>
-                                <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($row['name']); ?></td>
-                                <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($row['price']); ?> USD</td>
+                                <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($row['nama']); ?></td>
+                                <td class="py-2 px-4 border-b"><?php echo number_format($row['harga'], 0, ',', '.'); ?> IDR</td>
+                                <td class="py-2 px-4 border-b"><img src="https://my-uts-bucket.s3.amazonaws.com/<?php echo $row['gambar']; ?>" width="100" /></td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
